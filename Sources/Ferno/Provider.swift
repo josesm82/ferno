@@ -16,8 +16,8 @@ struct Payload: JWTPayload {
     var iat: IssuedAtClaim
 
 
-    func verify() throws {
-        try exp.verify()
+    func verify(using signer: JWTSigner) throws {
+        try exp.verifyNotExpired()
     }
 }
 
